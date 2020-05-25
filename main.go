@@ -30,6 +30,7 @@ func rgbaToPixel(r uint32, g uint32, b uint32, a uint32) Pixel {
 	return pixel
 }
 
+// https://stackoverflow.com/a/41185404
 func getPixels(file io.Reader) ([][]Pixel, error) {
 	img, _, err := image.Decode(file)
 	if err != nil {
