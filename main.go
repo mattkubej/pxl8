@@ -9,8 +9,6 @@ import (
 	"image/png"
 	"io"
 	"os"
-	"path"
-	"path/filepath"
 )
 
 // Pixel -> color space representation
@@ -133,14 +131,7 @@ func main() {
 	image.RegisterFormat("jpeg", "jpeg", jpeg.Decode, jpeg.DecodeConfig)
 	image.RegisterFormat("png", "png", png.Decode, png.DecodeConfig)
 
-	ex, err := os.Executable()
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "failed to get executable")
-		os.Exit(1)
-	}
-	exPath := filepath.Dir(ex)
-
-	file, err := os.Open(path.Join(exPath, *in))
+	file, err := os.Open(*in)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "failed to open image")
 		os.Exit(1)
