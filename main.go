@@ -125,6 +125,11 @@ func main() {
 	blockSize := flag.Int("bs", 8, "block size, defaults to 8")
 	flag.Parse()
 
+	if *in == "" {
+		fmt.Fprintln(os.Stderr, "input image requred, use the -h flag for help")
+		os.Exit(1)
+	}
+
 	image.RegisterFormat("jpeg", "jpeg", jpeg.Decode, jpeg.DecodeConfig)
 	image.RegisterFormat("png", "png", png.Decode, png.DecodeConfig)
 
