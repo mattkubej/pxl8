@@ -121,7 +121,7 @@ func outputImg(pixels [][]Pixel) {
 
 func main() {
 	in := flag.String("i", "", "image to pixelate")
-	blockSize := flag.Int("bs", 8, "block size, defaults to 8")
+	blockSize := flag.Int("bs", 8, "block size")
 	flag.Parse()
 
 	if *in == "" {
